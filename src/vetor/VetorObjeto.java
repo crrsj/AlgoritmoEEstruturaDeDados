@@ -1,42 +1,20 @@
 package vetor;
 
-
-
-public class Vetor {
-	
-	private String [] elementos;
+public class VetorObjeto {
+	private Object [] elementos;
 	private int tamanho;
 	
-	public Vetor(int capacidade) {		
-		this.elementos = new String[capacidade];
+	public VetorObjeto(int capacidade) {		
+		this.elementos = new Object[capacidade];
 		this.tamanho = 0;
 	
 	}
 	
-	/*public void adiciona(String elemento) {		
-		for (int i = 0; i < this.elementos.length; i++) {
-			if(this.elementos[i] == null) {
-				this.elementos[i] = elemento;
-				break;
-			}
-		}
-		
-	}*/
- /* public void adiciona(String elemento) {
-	  if(this.tamanho < this.elementos.length) {
-		  this.elementos[this.tamanho]= elemento;
-		  this.tamanho ++;
-	  }
-	 
-	  else {
-		  throw new ArrayIndexOutOfBoundsException("O array já está cheio");
-	  }
-  }
-  */
-  public boolean adiciona(String elemento) {
+	
+  public boolean adiciona(Object elemento) {
 	  aumentaCapacidade() ;
 	  if(this.tamanho < this.elementos.length) {
-		  this.elementos[this.tamanho]= elemento;
+		  this.elementos[this.tamanho]= elemento; 
 		  this.tamanho ++;
 		  return true;
 	  }
@@ -65,14 +43,14 @@ public String toString() {
 	return  s.toString();
 }
   
-  public String busca(int posicao) {
+  public Object busca(int posicao) {
 	  if(!(posicao >= 0 && posicao < tamanho)) {
 		  throw new IllegalArgumentException("Posição inválida");
 	  }
 	  return this.elementos[posicao];
   }
   
-  public int busca(String elemento) {
+  public int busca(Object elemento) {
 	  for(int i = 0; i < this.tamanho; i++) {
 		  if(this.elementos[i].equals(elemento)) {
 		  return i;
@@ -84,7 +62,7 @@ public String toString() {
   //Adicionar elemento em qualquer posição do vetor.
   //0 1 2 3 4 5 6 = tamanho é 5
   //B C E F G ++
-  public boolean adiciona(int posicao,String elemento) {
+  public boolean adiciona(int posicao,Object elemento) {
 	  if(!(posicao >= 0 && posicao < tamanho)) {
 		  throw new IllegalArgumentException("Posição inválida");
 	  }
@@ -101,7 +79,7 @@ public String toString() {
   }
   public void aumentaCapacidade() {
 	  if ( this.tamanho == this.elementos.length) {
-		  String [] elementosNovos = new String [this.elementos.length * 2];
+		  Object [] elementosNovos = new String [this.elementos.length * 2];
 		  for (int i = 0; i < this.elementos.length; i++) {
 			  elementosNovos[i] = this.elementos[i];
 		  }
@@ -121,5 +99,7 @@ public String toString() {
 		  this.elementos[i] = this.elementos[i + 1];
 	  }
 	  this.tamanho --;  
-} 
+  } 
+  
+  
 }
