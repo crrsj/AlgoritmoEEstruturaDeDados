@@ -19,6 +19,27 @@ private T [] elementos;
 	
 	}
 	
+	public boolean contem(T elemento) {
+		return busca(elemento) > -1;
+	}
+	
+	
+	public int ultimoIndice(T elemento) {		
+		for(int i = tamanho-1; i >=0 ; i--) {
+			if(this.elementos[i].equals(elemento)) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	
+	public void remove(T elemento) {
+		int pos = this.busca(elemento);
+		if (pos > -1) {
+			this.remove(pos);
+		}
+	}
 	
   public boolean adiciona(T elemento) {
 	  aumentaCapacidade() ;
